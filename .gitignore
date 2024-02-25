@@ -1,0 +1,22 @@
+# Dépendances
+/node_modules
+/frontend/node_modules
+/backend/node_modules
+
+# Fichiers de logs
+*.log
+npm-debug.log*
+
+# Fichiers de l'environnement d'exécution
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dossier de cache de l'IDE
+.idea/
+.vscode/
+
+# Fichiers spécifiques au système d'exploitation
+.DS_Store
