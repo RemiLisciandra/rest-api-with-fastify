@@ -47,8 +47,29 @@ export async function startServer(fastify, dbFile) {
     try {
         await fastify.listen({ port: 3000 });
         await ensureHabitsJsonFileExists(dbFile, fastify);
-    } catch (err) {
-        fastify.log.error(err);
+    } catch (error) {
+        fastify.log.error(error);
         process.exit(1);
+    }
+}
+
+export async function updateAllHabitsWithToday(dbFile) {
+    try {
+        console.log("Starting to update resources with today's date...");
+        const data = await fs.readFile(dbFile, "utf-8");
+        const jsonData = JSON.parse(data);
+
+        const today = new Date().toISOString().split('T')[0];
+
+        jsonData.habits.forEach(habit => {
+            if (!habit.daysDone[today]) {
+                habit.daysDone[today] = false;
+            }
+        });
+
+        await fs.writeFile(dbFile, JSON.stringify(jsonData, null, 2), "utf-8");
+        console.log("All resources updated with today's date set to false.");
+    } catch {
+        console.error("Failed to update all resources with today's date.");
     }
 }

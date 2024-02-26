@@ -17,7 +17,7 @@ export const postHabit = (fastify, dbFile) => {
         },
         async (req, res) => {
             try {
-                const data = await readDbFile(dbFile);
+                const data = await readDbFile(dbFile, "utf-8");
                 const { title  } = req.body;
 
                 const titleExists = data.habits.some(habit => habit.title === title);

@@ -4,7 +4,7 @@ import fs from "fs/promises";
 export const deleteHabitById = (fastify, dbFile) => {
     fastify.delete('/habits/:id', async (req, res) => {
         try {
-            const data = await readDbFile(dbFile);
+            const data = await readDbFile(dbFile, "utf-8");
             const habits = data.habits;
             const id = parseInt(req.params.id, 10);
 
