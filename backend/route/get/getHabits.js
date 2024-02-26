@@ -1,6 +1,6 @@
 import {readDbFile} from "../../utils.js";
 
-export const getHabits = (fastify, dbFile) => { // Ajout de dbFile comme argument
+export const getHabits = (fastify, dbFile) => {
     fastify.get('/habits', async (req, res) => {
         try {
             return await readDbFile(dbFile);
