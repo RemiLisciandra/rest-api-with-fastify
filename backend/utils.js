@@ -23,7 +23,7 @@ async function ensureHabitsJsonFileExists(dbFile, fastify) {
     const fileExists = await checkHabitsFileExists(dbFile);
     if (!fileExists) {
         try {
-            await fs.writeFile(dbFile, JSON.stringify({ habits: [] }), "utf-8"); // Initialisation avec un contenu basique
+            await fs.writeFile(dbFile, JSON.stringify({ habits: [] }), "utf-8");
             fastify.log.info("Habits JSON file created successfully");
         } catch (error) {
             fastify.log.error(error);

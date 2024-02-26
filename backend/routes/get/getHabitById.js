@@ -16,7 +16,7 @@ export const getHabitById = (fastify, dbFile) => {
             }
 
         } catch {
-            res.status(500).send({ error: 'Failed to read data' });
+            res.status(500).send({ error: 'Failed to read resource' });
         }
     });
 };

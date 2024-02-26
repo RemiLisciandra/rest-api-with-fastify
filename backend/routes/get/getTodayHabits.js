@@ -19,8 +19,8 @@ export const getTodayHabits = (fastify, dbFile) => {
             } else {
                 return res.send(results);
             }
-        } catch (error){
-            res.status(500).send({ error: 'Failed to read data' + error });
+        } catch {
+            res.status(500).send({ error: 'Failed to read resource' });
         }
     });
 };
