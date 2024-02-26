@@ -9,18 +9,173 @@
   </head>
   <body>
     <div id="app">
-      <div class="min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8 flex" id="container">
-        <h1 class="text-center text-6xl font-semibold mt-5">Habit to make today !</h1>
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[200px] flex justify-center flex-col">
-          <button id="add-new-habit-button" type="button" class="inline-flex justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300">
+      <div
+        class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8"
+        id="container"
+      >
+        <h1 class="text-center text-6xl font-semibold mt-5">
+          Habit to make today!
+        </h1>
+        <div
+          class="mt-10 sm:mx-auto sm:w-full sm:max-w-[200px] flex justify-center flex-col gap-4"
+        >
+          <div id="habits-container"></div>
+          <button
+            id="add-new-habit-button"
+            type="button"
+            class="inline-flex justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300"
+          >
             Add new habit
           </button>
-          <button id="see-history-button" type="button" class="inline-flex justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300">
+          <button
+            id="see-history-button"
+            type="button"
+            class="inline-flex justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-black shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-black hover:text-white"
+          >
             See history
           </button>
         </div>
       </div>
+      <div
+        id="add-new-habit-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 justify-center items-center hidden"
+      >
+        <div
+          role="dialog"
+          aria-modal="true"
+          class="relative z-50 transform overflow-hidden rounded-lg bg-white p-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg mx-4"
+        >
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Add a new habit !
+            </h3>
+            <button
+              id="close-button"
+              type="button"
+              class="bg-transparent rounded-md text-gray-400 hover:bg-white"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <input
+            id="text"
+            name="text"
+            type="text"
+            placeholder="Habit"
+            required
+            class="flex-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inse sm:text-sm sm:leading-6"
+          />
+          <div class="mt-2 flex justify-end">
+            <button
+              id="add-new-habit-button-in-modal"
+              type="submit"
+              class="inline-flex justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="edit-habit-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 justify-center items-center hidden"
+      >
+        <div
+          role="dialog"
+          aria-modal="true"
+          class="relative z-50 transform overflow-hidden rounded-lg bg-white p-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg mx-4"
+        >
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Edit name of habit !
+            </h3>
+            <button
+              id="close-button"
+              type="button"
+              class="bg-transparent rounded-md text-gray-400 hover:bg-white"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <input
+            id="text"
+            name="text"
+            type="text"
+            value=""
+            required
+            class="flex-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inse sm:text-sm sm:leading-6"
+          />
+          <div class="mt-2 flex justify-end">
+            <button
+              id="add-new-habit-button-in-modal"
+              type="submit"
+              class="inline-flex justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="see-history-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 justify-center items-center hidden"
+      >
+        <div
+          role="dialog"
+          aria-modal="true"
+          class="relative z-50 transform overflow-hidden rounded-lg bg-white p-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg mx-4"
+        >
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Habits history
+            </h3>
+            <button
+              id="close-button"
+              type="button"
+              class="bg-transparent rounded-md text-gray-400 hover:bg-white"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div id="history-container" class="overflow-scroll"></div>
+        </div>
+      </div>
     </div>
-    <script type="module" src="main.js"></script>
   </body>
 </html>
