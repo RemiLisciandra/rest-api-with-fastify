@@ -24,12 +24,12 @@ async function ensureHabitsJsonFileExists(dbFile, fastify) {
   if (!fileExists) {
     try {
       await fs.writeFile(dbFile, JSON.stringify({ habits: [] }), "utf-8");
-      fastify.log.info("Habits JSON file created successfully");
+      fastify.log.info("Habits JSON file created successfully.");
     } catch (error) {
       fastify.log.error(error);
     }
   } else {
-    fastify.log.info("Habits JSON file already exists");
+    fastify.log.info("Habits JSON file already exists.");
   }
 }
 
@@ -38,7 +38,7 @@ export async function readDbFile(dbFile) {
     const data = await fs.readFile(dbFile, "utf8");
     return JSON.parse(data);
   } catch (error) {
-    console.error("Error reading the DB file:", error);
+    console.error("Error reading the DB file : ", error);
     throw error;
   }
 }

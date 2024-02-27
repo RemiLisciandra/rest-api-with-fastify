@@ -14,13 +14,14 @@ export const patchHabit = (fastify, dbFile) => {
       if (habitIndex === -1) {
         return res.status(404).send({ error: "Resource not found." });
       }
+
       if (typeof done !== "undefined") {
         data.habits[habitIndex].daysDone[today] = done;
       }
 
       await fs.writeFile(dbFile, JSON.stringify(data, null, 2), "utf-8");
       res.send({
-        message: "The resource updated successfully",
+        message: "The resource updated successfully.",
         habit: data.habits[habitIndex],
       });
     } catch (error) {

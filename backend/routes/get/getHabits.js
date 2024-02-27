@@ -6,7 +6,7 @@ export const getHabits = (fastify, dbFile) => {
       const data = await readDbFile(dbFile, "utf-8");
       res.send(data.habits);
     } catch (error) {
-      res.status(500).send({ error: "Failed to read resource" });
+      res.status(500).send({ error: "Failed to read resource." });
     }
   });
 };

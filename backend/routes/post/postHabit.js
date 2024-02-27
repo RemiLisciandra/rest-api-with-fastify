@@ -40,11 +40,11 @@ export const postHabit = (fastify, dbFile) => {
         data.habits.push(createdHabit);
         await fs.writeFile(dbFile, JSON.stringify(data, null, 2), "utf-8");
         res.send({
-          message: "The habit has been successfully created",
+          message: "The habit has been successfully created.",
           habit: createdHabit,
         });
       } catch {
-        res.status(500).send({ error: "Failed to create the habit" });
+        res.status(500).send({ error: "Failed to create the habit." });
       }
     }
   );

@@ -15,14 +15,14 @@ export const deleteHabitById = (fastify, dbFile) => {
         await fs.writeFile(dbFile, JSON.stringify(data, null, 2), "utf-8");
 
         res.send({
-          message: "Resource deleted successfully",
+          message: "Resource deleted successfully.",
           habit: deletedHabit,
         });
       } else {
-        res.status(404).send({ error: "Resource not found" });
+        res.status(404).send({ error: "Resource not found." });
       }
     } catch {
-      res.status(500).send({ error: "Failed to read resource" });
+      res.status(500).send({ error: "Failed to read resource." });
     }
   });
 };

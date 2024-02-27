@@ -12,10 +12,10 @@ export const getHabitById = (fastify, dbFile) => {
       if (habit) {
         res.send(habit);
       } else {
-        res.status(404).send({ error: "Resource not found" });
+        res.status(404).send({ error: "Resource not found." });
       }
     } catch {
-      res.status(500).send({ error: "Failed to read resource" });
+      res.status(500).send({ error: "Failed to read resource." });
     }
   });
 };

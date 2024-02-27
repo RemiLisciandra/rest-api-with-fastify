@@ -14,4 +14,4 @@ cd backend;
 npm dev;
 ```
 
-Un dossier `database` va se créer automatiquement et un fichier json `database.json` va être généré.
+Un dossier `db` va se créer automatiquement et un fichier json `db.json` va être généré.
