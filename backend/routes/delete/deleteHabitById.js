@@ -2,11 +2,11 @@ import { readDbFile } from "../../utils.js";
 import fs from "fs/promises";
 
 export const deleteHabitById = (fastify, dbFile) => {
-  fastify.delete("/habits/:id", async (req, res) => {
+  fastify.delete("/habit/:id", async (req, res) => {
     try {
       const data = await readDbFile(dbFile, "utf-8");
       const habits = data.habits;
-      const id = parseInt(req.params.id, 10);
+      const id = req.params.id;
 
       const index = habits.findIndex((habit) => habit.id === id);
 

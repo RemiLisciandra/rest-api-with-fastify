@@ -1,11 +1,11 @@
 import { readDbFile } from "../../utils.js";
 
 export const getHabitById = (fastify, dbFile) => {
-  fastify.get("/habits/:id", async (req, res) => {
+  fastify.get("/habit/:id", async (req, res) => {
     try {
       const data = await readDbFile(dbFile, "utf-8");
       const habits = data.habits;
-      const id = parseInt(req.params.id, 10);
+      const id = req.params.id;
 
       const habit = habits.find((habit) => habit.id === id);
 
