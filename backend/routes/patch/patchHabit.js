@@ -5,7 +5,7 @@ export const patchHabit = (fastify, dbFile) => {
   fastify.patch("/habit/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const { title } = req.body;
+      const { done } = req.body;
       const today = new Date().toISOString().split("T")[0];
 
       const data = await readDbFile(dbFile, "utf-8");
@@ -14,13 +14,8 @@ export const patchHabit = (fastify, dbFile) => {
       if (habitIndex === -1) {
         return res.status(404).send({ error: "Resource not found." });
       }
-
-      if (title) {
-        data.habits[habitIndex].title = title;
-      }
-
-      if (!data.habits[habitIndex].daysDone[today]) {
-        data.habits[habitIndex].daysDone[today] = false;
+      if (typeof done !== "undefined") {
+        data.habits[habitIndex].daysDone[today] = done;
       }
 
       await fs.writeFile(dbFile, JSON.stringify(data, null, 2), "utf-8");
